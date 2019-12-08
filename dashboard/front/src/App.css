@@ -6,27 +6,53 @@
   height: 40vmin;
 }
 
-.App-header {
-  background-color: #282c34;
+.NavBar{
+  margin:auto; 
+}
+.Form{
+  border:solid red 1px; 
+  width: 100vw;
+}
+.FormControl{
+  width: 100vw;
+  border:solid blue 1px;
+}
+
+.Section {
+  background-color: #282c34; 
+  /*background-color: aliceblue; */
+  border:solid red 1px; 
   min-height: 100vh;
-  display: flex;
+
+  /* Pour mettre les bords */
+  padding: 5vh;
+  box-sizing: border-box;
+
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.856); 
+  
+/*  display: flex; 
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  */
 }
 
 .App-link {
   color: #09d3ac;
 }
 
-.row {
+.Row {
   text-align: center;
   border:solid red 1px; 
+  padding: 5vh;
+  box-sizing: border-box;
 }
-.col {
+.Col {
   text-align: center;
   border: solid red 1px;
-  
 }
+
