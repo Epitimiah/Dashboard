@@ -1,58 +1,114 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
+  background-color: #282c34; 
 }
 
 .NavBar{
-  margin:auto; 
+  padding-top: 5vh;
+  width: 100vw;
 }
 .Form{
-  border:solid red 1px; 
-  width: 100vw;
+  margin-top: 1vh;
+  float: right;
+  padding-right: 3em;
 }
-.FormControl{
-  width: 100vw;
-  border:solid blue 1px;
+
+.Admin{
+  margin-top: 1vh;
+}
+
+.Brand{ 
+  padding-top: 2vh;
+  background-color: #282c34; 
+  color: rgba(255, 255, 255, 0.856); 
+  border:solid darkturquoise 3px;
 }
 
 .Section {
   background-color: #282c34; 
   /*background-color: aliceblue; */
-  border:solid red 1px; 
+  /*border:solid aliceblue 1px; /////////////////////////////  */   
   min-height: 100vh;
 
   /* Pour mettre les bords */
-  padding: 5vh;
+  padding: 3vh;
   box-sizing: border-box;
 
   justify-content: center;
   color: rgba(255, 255, 255, 0.856); 
-  
-/*  display: flex; 
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  */
 }
 
-.App-link {
-  color: #09d3ac;
+.Col-Top{
+  border:solid lavender 1px; 
+  background-color: rgb(32, 34, 36);
+  margin-bottom: 1rem;
+  /* Pour faire une boite */ 
+  padding: 1vh;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+}
+.Col-Top h4 {
+  font: bold;
+  color: whitesmoke;
+}
+
+.Col-Bottom{
+  border:solid lavender 1px; 
+  background-color: rgba(28, 35, 42, 0.89);
+
+  /* Pour faire une boite */ 
+  padding: 1vh;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+
+}
+.Col-Bottom h4 {
+  font: bold;
+  color: whitesmoke; 
 }
 
 .Row {
-  text-align: center;
-  border:solid red 1px; 
+  justify-content: center;
+  /* border:solid red 1px; */
+
+  /* Pour faire une boite */ 
   padding: 5vh;
   box-sizing: border-box;
 }
-.Col {
-  text-align: center;
-  border: solid red 1px;
+
+.Col-sensor-location {
+  margin-left: 1.5rem;
+  border:solid lavender 1px;  
+  justify-content: center;
+  align-content: center;
+}
+
+.Col-sensor-location h4{
+  font: bold;
+  color: whitesmoke;
+
+}
+
+.Col{
+  border:solid rgb(161, 161, 223) 2px; 
+  background-color:  rgba(28, 35, 42, 0.89);
+  padding-left: 10rem;
+  padding: 1vh;
+  box-sizing: border-box;
+}
+.LineChart{
+  width: 100%;
+  height: 80%;
+  
+  margin: auto;
+}
+
+.Col-Ahead{
+  /*border:solid violet 1px; ///////*/
+  margin-right: 1.5rem;
+}
+.Col-Down{
+  /*border:solid violet 1px; /////////*/
+  margin-left: 1.5rem;
 }
 
