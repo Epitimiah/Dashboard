@@ -6,6 +6,9 @@ import {
   Button,
   Col,
   Row, 
+  ButtonToolbar, 
+  DropdownButton, 
+  Dropdown,
     } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,7 +19,11 @@ import SensorLocation from './Components/SensorLocation/SensorLocation.js';
 import UserLocation from './Components/UserLocation/UserLocation.js'; 
 import PerHome from './Components/PerHome/PerHome.js'; 
 import HouseSize from './Components/HouseSize/HouseSize.js'; 
+
 import FormAddUser from './Components/FormAddUser/FormAddUser.js'; 
+import FormAddSensor from './Components/FormAddSensor/FormAddSensor.js'; 
+import FormAddMeasure from './Components/FormAddMeasure/FormAddMeasure.js'; 
+import Delete from './Components/Delete/Delete.js'; 
 
 
 class App extends React.Component {
@@ -25,11 +32,21 @@ class App extends React.Component {
     this.state = {
       admin: false,
       toggleButton: "Admin",
-      Form: "<FormAddUser> <FormAddUser/>",
+      Subject: "User",
+      Action: "none", 
     }
   }
+
+  //Pour changer de form en fonction du bouton choisis 
+  SetForm(subject,action) {
+    this.setState({
+      Subject: subject,
+      Action: action,
+    })
+  }
+
   //Permet de passer d'une page admin à une autres 
-    adminPage() {
+  adminPage() {
       //Change le contenue du bouton Admin en Home si on est sur la page admin 
       if ( this.state.admin === true){
         this.setState({
@@ -46,7 +63,7 @@ class App extends React.Component {
       }
   }
 
-  renderNavBar () {
+  renderNavBar = ()=> {
     return (
       <header className="App-header">
         <Row className="NavBar"> 
@@ -72,7 +89,56 @@ class App extends React.Component {
       
       </header>
     ) 
-  } 
+  }
+
+  formChoose = () =>{
+    if ( this.state.Action === "Add"){   
+        if ( this.state.Subject === "User"){
+          return(
+            <FormAddUser change="none" action={this.state.Action}>
+            </FormAddUser>
+          ) ;
+        }
+        if ( this.state.Subject === "Sensor"){
+          return(
+            <FormAddSensor change="none" action={this.state.Action}>
+            </FormAddSensor>
+          ) ;
+        }
+        if ( this.state.Subject === "Measure"){
+          return(
+            <FormAddMeasure change="none" action={this.state.Action}>
+            </FormAddMeasure>
+          ) ;
+        }
+    }
+    else if ( this.state.Action === "Modify"){   
+        if ( this.state.Subject === "User"){
+          return(
+            <FormAddUser change="true" action={this.state.Action}>
+            </FormAddUser>
+          ) ;
+        }
+        if ( this.state.Subject === "Sensor"){
+          return(
+            <FormAddSensor change="true" action={this.state.Action}>
+            </FormAddSensor>
+          ) ;
+        }
+        if ( this.state.Subject === "Measure"){
+          return(
+            <FormAddMeasure change="true" action={this.state.Action}>
+            </FormAddMeasure>
+          ) ;
+        }
+    }
+    else if ( this.state.Action === "Delete" ){
+      return(
+        <Delete name= {this.state.Subject}></Delete>
+      ); 
+    }
+
+  }
 
   render(){
     if(this.state.admin === false){
@@ -139,28 +205,75 @@ class App extends React.Component {
           <section className="Section">
           
              <Row>
-              <Col  md={3}>
+               
+              <Col  md={3} className="Requete">
+              <br></br>
                 <Row>
                   <Col> <h3> Requêtes dispo </h3></Col>
                 </Row>
                 <br></br>
+
                 <Row>
-                  <Col> <Button variant="outline-info"> <h5>Add new User </h5></Button> </Col>
+                  <Col> 
+                    <DropdownButton
+                        drop="right"
+                        variant="outline-info"
+                        title="User" 
+                        key="right"
+                        size="lg"
+                      >
+                        <Dropdown.Item variant="outline-info" eventKey="1" onClick={ () => this.SetForm("User", "Add") } >Add New User</Dropdown.Item>
+                        <Dropdown.Item variant="outline-info" eventKey="2" onClick={ () => this.SetForm("User", "Modify") }  >Modifiy user data</Dropdown.Item>
+                        <Dropdown.Item variant="outline-info" eventKey="3" onClick={ () => this.SetForm("User", "Delete") }  >Delete User </Dropdown.Item>
+                          
+                    </DropdownButton>
+
+                  </Col>
                 </Row>
                 <br></br>
+
                 <Row>
-                  <Col> <Button variant="outline-info"> <h5>Delete User  </h5></Button> </Col>
+                <Col> 
+                    <DropdownButton
+                        drop="right"
+                        variant="outline-info"
+                        title="Sensor" 
+                        key="right"
+                        size="lg"
+                      >
+                        <Dropdown.Item variant="outline-info" eventKey="1" onClick={ () => this.SetForm("Sensor", "Add") } >Add New Sensor</Dropdown.Item>
+                        <Dropdown.Item variant="outline-info" eventKey="2" onClick={ () => this.SetForm("Sensor", "Modify") }  >Modifiy Sensor data</Dropdown.Item>
+                        <Dropdown.Item variant="outline-info" eventKey="3" onClick={ () => this.SetForm("Sensor", "Delete") }  >Delete Sensor </Dropdown.Item>
+                          
+                    </DropdownButton>
+
+                  </Col>
                 </Row>
                 <br></br>
+
                 <Row>
-                  <Col> <Button variant="outline-info"> <h5>Add new sensor </h5></Button> </Col>
+                <Col> 
+                    <DropdownButton
+                        drop="right"
+                        variant="outline-info"
+                        title="Measure" 
+                        key="right"
+                        size="lg"
+                      >
+                        <Dropdown.Item variant="outline-info" eventKey="1" onClick={ () => this.SetForm("Measure", "Add") } >Add New Measure</Dropdown.Item>
+                        <Dropdown.Item variant="outline-info" eventKey="2" onClick={ () => this.SetForm("Measure", "Modify") }  >Modifiy Measure data</Dropdown.Item>
+                        <Dropdown.Item variant="outline-info" eventKey="3" onClick={ () => this.SetForm("Measure", "Delete") }  >Delete Measure </Dropdown.Item>
+                          
+                    </DropdownButton>
+
+                  </Col>
                 </Row>
               </Col>
 
               <Col  md={9}>
-                
-                <FormAddUser>
-                </FormAddUser>
+              
+                <br></br>
+                {this.formChoose()}
               
               
               </Col>

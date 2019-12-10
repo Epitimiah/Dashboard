@@ -25,7 +25,7 @@ _id ///
           
           <Row>
             <Col>
-                <h1> New User </h1>
+                <h1> {this.props.action} User </h1>
             </Col>
           </Row>
           <br>
@@ -34,13 +34,18 @@ _id ///
               
             <Col md={{ span: 6, offset: 3 }} >
             <Form.Row>
+              <Form.Group as={Col} style={{display: this.props.change, 'block' : 'none' }}>
+                <Form.Label> ID User</Form.Label>
+                <Form.Control type="text" placeholder="Id User" />
+              </Form.Group>
+
               <Form.Group as={Col}>
                 <Form.Label>House Size</Form.Label>
                 <Form.Control type="text" placeholder="House Size (m²)" />
               </Form.Group>
 
               <Form.Group as={Col}>
-                <Form.Label>Person inside the house</Form.Label>
+                <Form.Label>Nb people inside</Form.Label>
                 <Form.Control type="text" placeholder="People inside the house" />
               </Form.Group>
             </Form.Row>
